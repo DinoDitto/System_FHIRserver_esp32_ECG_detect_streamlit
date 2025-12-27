@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "admin",
+      "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+      "full_name": "系統管理員",
+      "role": "admin",
+      "gender": "other",
+      "birth_date": "1990-01-01",
+      "fhir_patient_id": null,
+      "created_at": "2025-12-27T19:28:43.756609"
+    },
+    {
+      "id": 5,
+      "username": "dino",
+      "password": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+      "full_name": "林祥吉",
+      "role": "user",
+      "gender": "male",
+      "birth_date": "2015-12-30",
+      "fhir_patient_id": "1139",
+      "created_at": "2025-12-27T22:34:57.611582"
+    },
+    {
+      "id": 6,
+      "username": "hihi",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "full_name": "hihi",
+      "role": "user",
+      "gender": "female",
+      "birth_date": "2025-12-10",
+      "fhir_patient_id": "1367",
+      "created_at": "2025-12-28T00:47:20.151650"
+    }
+  ],
+  "next_id": 7
+}
