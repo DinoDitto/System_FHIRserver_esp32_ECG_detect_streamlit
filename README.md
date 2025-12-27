@@ -257,7 +257,7 @@ WIFI_SSID = "你的WiFi名稱"
 WIFI_PASSWORD = "你的WiFi密碼"
 
 # FHIR Server 設定
-FHIR_BASE_URL = "http://192.168.0.9:8080/fhir"  # 改成你電腦的 IP
+FHIR_BASE_URL = "http://伺服器IP:8080/fhir"  
 PATIENT_ID = "1139"  # 從 Streamlit 獲取的 Patient ID
 ```
 
@@ -355,11 +355,11 @@ Connecting to WiFi: tungman142...
 # main.py 配置說明
 
 # === WiFi 設定 ===
-WIFI_SSID = "tungman142"        # WiFi 名稱
-WIFI_PASSWORD = "tungman212142"  # WiFi 密碼
+WIFI_SSID = "你的WiFi名稱"
+WIFI_PASSWORD = "你的WiFi密碼"
 
 # === FHIR Server 設定 ===
-FHIR_BASE_URL = "http://192.168.0.9:8080/fhir"  # FHIR Server URL
+FHIR_BASE_URL = "http://伺服器IP:8080/fhir"  # FHIR Server URL
 PATIENT_ID = "1139"  # Patient ID（從 Streamlit 獲取）
 
 # === 硬體設定 ===
@@ -398,23 +398,13 @@ START_END_BEEP_MS = 500   # 開始/結束嗶聲時長（500ms）
 FHIR_SERVER_URL = "http://localhost:8080/fhir"
 
 # 如果 Streamlit 在不同電腦，改成：
-# FHIR_SERVER_URL = "http://192.168.0.9:8080/fhir"
+# FHIR_SERVER_URL = "http://伺服器IP:8080/fhir"
 ```
 
 ### 網路配置注意事項
 
 **所有設備必須在同一網段！**
 
-✅ **正確配置：**
-- ESP32 IP: `192.168.0.12`
-- 電腦 IP: `192.168.0.9`
-- FHIR Server: `192.168.0.9:8080`
-
-❌ **錯誤配置：**
-- ESP32 IP: `192.168.0.12`
-- 電腦 IP: `172.20.10.6`（不同網段）
-
-**解決方法：**
 1. 所有設備連接同一個 WiFi
 2. 或使用手機熱點讓所有設備連接
 
@@ -449,7 +439,7 @@ FHIR_SERVER_URL = "http://localhost:8080/fhir"
 1. **檢查網路連通性**
    ```bash
    # 在電腦上測試
-   curl http://192.168.0.9:8080/fhir/metadata
+   curl http://伺服器IP:8080/fhir/metadata
    ```
 
 2. **確認 IP 正確**
@@ -575,7 +565,7 @@ python -m serial.tools.miniterm COM6 115200
 ```python
 # 在 ESP32 REPL 中測試
 import urequests
-response = urequests.get("http://192.168.0.9:8080/fhir/metadata")
+response = urequests.get("http://伺服器IP:8080/fhir/metadata")
 print(response.status_code)
 response.close()
 ```
@@ -789,7 +779,7 @@ curl -X POST http://localhost:8080/fhir/Patient \
   -d '{
     "resourceType": "Patient",
     "identifier": [{
-      "system": "http://ditto-healthcare.org/patient-id",
+      "system": "http://伺服器IP:8080/patient-id",
       "value": "user123"
     }],
     "name": [{
@@ -1038,17 +1028,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
----
-
-## 📞 聯繫與支持
-
-如有問題或建議，歡迎通過以下方式聯繫：
-
-- **GitHub Issues**: [專案頁面](https://github.com/your-repo)
-- **Email**: your-email@example.com
-- **Documentation**: [完整文檔](https://your-docs-site.com)
-
----
 
 ## 🙏 致謝
 
@@ -1057,38 +1036,5 @@ SOFTWARE.
 - **HAPI FHIR** - FHIR Server 實現
 - **Streamlit** - Web 應用框架
 - **MicroPython** - ESP32 Python 運行環境
-- **Plotly** - 數據可視化庫
 
 特別感謝所有貢獻者和社群支持！
-
----
-
-## 📅 更新日誌
-
-### v1.0.0 (2025-12-27)
-
-**初始發布**
-
-✨ **新功能：**
-- ESP32 實時 ECG 採集與心率檢測
-- FHIR R4 標準數據存儲
-- Streamlit Web 管理界面
-- 多用戶管理系統
-- 數據可視化與趨勢分析
-
-🐛 **修復：**
-- MicroPython urequests params 參數問題
-- NTP 時間同步
-- FHIR Patient 驗證問題
-
-📚 **文檔：**
-- 完整的 README
-- 配置指南
-- 故障排除文檔
-- API 參考
-
----
-
-**最後更新：** 2025-12-27  
-**版本：** 1.0.0  
-**狀態：** ✅ 穩定版本
